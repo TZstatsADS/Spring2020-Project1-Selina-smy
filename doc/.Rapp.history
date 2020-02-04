@@ -1,0 +1,11 @@
+library(tidyverse)#
+library(tidytext)#
+library(plotly)#
+library(DT)#
+library(tm)#
+library(data.table)#
+library(scales)#
+library(wordcloud2)#
+library(gridExtra)#
+library(ngram)#
+library(shiny)

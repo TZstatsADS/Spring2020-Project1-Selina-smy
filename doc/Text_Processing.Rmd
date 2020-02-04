@@ -129,12 +129,47 @@ completed <- completed %>%
 dt_lyrics <- dt_lyrics %>%
   mutate(id = row_number()) %>%
   inner_join(completed)
+
 ```
 
 ### Exporting the processed text data into a CSV file
 
 ```{r export data}
 save(dt_lyrics, file="../output/processed_lyrics.RData")
+```
+
+## some precessed text data
+
+```{r}
+dt_lyrics <- dt_lyrics %>%
+            mutate(decade = 
+                     ifelse(year %in% 1970:1979, "1970s",
+                     ifelse(year %in% 1980:1989, "1980s", 
+                     ifelse(year %in% 1990:1999, "1990s", 
+                     ifelse(year %in% 2000:2009, "2000s", 
+                     ifelse(year %in% 2010:2020, "2010s", 
+                            "NA"))))))
+song.genre.1970 <- dt_lyrics %>% 
+                 filter(genre!='Not Available' & genre!='Other')%>%
+                 filter(decade == "1970s")
+save(song.genre.1970, file="../output/lyrics_1970.RData")
+song.genre.1980 <- dt_lyrics %>% 
+                 filter(genre!='Not Available' & genre!='Other')%>%
+                 filter(decade == "1980s")
+save(song.genre.1980, file="../output/lyrics_1980.RData")
+song.genre.1990 <- dt_lyrics %>% 
+                 filter(genre!='Not Available' & genre!='Other')%>%
+                 filter(decade == "1990s")
+save(song.genre.1990, file="../output/lyrics_1990.RData")
+song.genre.2000 <- dt_lyrics %>% 
+                 filter(genre!='Not Available' & genre!='Other')%>%
+                 filter(decade == "2000s")
+save(song.genre.2000, file="../output/lyrics_2000.RData")
+song.genre.2010 <- dt_lyrics %>% 
+                 filter(genre!='Not Available' & genre!='Other')%>%
+                 filter(decade == "2010s")
+save(song.genre.2010, file="../output/lyrics_2010.RData")
+
 ```
 
 The final processed data is ready to be used for any kind of analysis.
