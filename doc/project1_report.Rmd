@@ -1,5 +1,5 @@
 ---
-title: "A Data Story on Song Lyrics"
+title: "What's in the song lyrics?"
 output:
   html_document:
     df_print: paged
@@ -218,7 +218,7 @@ d3heatmap(sentiment.nrc.score, colors='Reds', scale='none', Rowv=T, Colv=F,xaxis
 Basically, music like Jazz,R&B, Pop, Electronic,Country and Folk express more positive, while Metal and Hip-Pop music tend to show negative emotions. In addition, Indie and Rock music are neutral sentiments in general. According to the map, we can say very few music genres talk about surprise and disgust in lyrics. What’s more, joy plays an important role among all the emotions in most music genres except Metal and Hip-Hop. 
 
 ### Sentiment Analysis using AFINN
-from the analysis by using nrc, we see that both positive and negative taking leading position in the all emontional categories. In this part, I assigns words with a score that runs between -5 and 5 by using afinn to know which sentiment is more often expressed in lyrics of different music genres. 
+from the analysis by using nrc, we see that both positive and negative taking leading position in all emontional categories. In this part, I assigns words with a score that runs between -5 and 5 by using afinn to know which sentiment is more often expressed in lyrics of different music genres. 
 
 ```{r,warning=F, message=F, echo=F,fig.align='center',fig.width=9,fig.height=6}
 # sentiment analysis with afinn
@@ -244,7 +244,7 @@ lyrics.sentiment.afinn %>%
   theme_light()+
   theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
 ```
-According to the average sentiment value, Hip-Hop and Metal music show strong negative value and Jazz music is the most postive. In addition, music like electronic and folk are neutral sentiments. Comapring the sentiment analysis by nrc and the anlaysis by afinn, we find that the result are slightly different. Based on the analysis of nrc, rock music is positive.However,rock music is driven by negative sentiment by using afinn to anlaysis the sentiment. Thus, I want to go deeper to see the lyrics in rock music.
+According to the average sentiment value, Hip-Hop and Metal music show strong negative value and Jazz music is the most postive. In addition, music like electronic and folk are neutral sentiments. Comapring the sentiment analysis by nrc and the anlaysis by afinn, we find the results are slightly different. Based on the analysis of nrc, rock music is positive. However,rock music is driven by negative sentiment by using afinn to anlaysis the sentiment. Thus, I want to go deeper to see the lyrics in rock music.
 
 ## What does Rock music foucus on?
 Based on sentiment anlaysis, we know that different genres tend to express different sentiment.However, the sentiment analysis of rock music is slightly different by using different sentiment lexicon. Thus, it’s worth looking deeper to understand if rock music ended up more positive or negative. Therefore, I count the most frequently used words in rock music lyrics to see rock music words countributions.
@@ -260,19 +260,19 @@ word.rock <- words %>%
 wordcloud2(word.rock,size = 0.6,shape = "circle’")
 
 ```
-In rock music, "time" is the most important word. Postive words such as “love”,"heart","dream","soul"and "live" are frequently used.On the other hand, however, negative words like "die","death", "dead","ill","pain","blood" and "dark" are mentioned a lot.According to the wordcloud, we can find that the sentiment of rock music is mixed, which explain why using different sentiment lexicon to categorizes words lead to some slightly different analysis results. 
+In rock music, "time" is the most important word. Postive words such as “love”,"heart","dream","soul"and "live" are frequently used. On the other hand, however, negative words like "die","death", "dead","ill","pain","blood" and "dark" are mentioned a lot. According to the wordcloud, we find that the sentiment of rock music is mixed, which explain why using different sentiment lexicon to categorizes words lead to some slightly different analysis results. 
 
 
 ## Summary
-By analyzing song lyrics in different decade and different musc genres, I get the following results.
+By analyzing song lyrics in different decade and different music genres, I get the following results.
 
 + In general, the change of tiem does not affect the length of lyrics. For most music genres, the length of Lyrics are less than 1000 words and the average length is around 250 words.
 
 + “LOVE”,”TIME”, “BABY”, “You’re”, “ILL” are some popular words that artiest prefer to use no matter in which decades.
 
-+ Different music genre express different sentiment. Basically, Jazz,R&B,Pop and Country tend to express positive while Metal and Hip-Pop music tend to show negative emotions. Others are close to neutral sentiments.
++ Different music genre express different sentiment. Basically, Jazz, R&B, Pop and Country tend to express positive while Metal and Hip-Pop music tend to show negative emotions. Others are close to neutral sentiments.
 
-+ From wordclouds we can see that lyrics don't consist of one kind of monotonous emotional words.The words of lyrics are colorful.
++ From wordcloud we can see that lyrics don't consist of one kind of singular emotional words.The words of lyrics are colorful.
 
 ### References
 
